@@ -14,9 +14,9 @@ namespace BowlingGame
         {
             if (pins < 0 || pins > 10)
                 throw new ArgumentOutOfRangeException(nameof(pins), "Pins must be between 0 and 10.");
-            if (rolls[18] == 10 && currentRoll >= rolls.Length)
+            if (currentRoll >= rolls.Length)
                 throw new InvalidOperationException("Cannot roll more than 21 times.");
-            if (rolls[18] != 10 && rolls[18] + rolls[19] != 10 &&currentRoll >= rolls.Length-1)
+            if (rolls[18] != 10 && rolls[18] + rolls[19] != 10 && currentRoll >= rolls.Length-1)
                 throw new InvalidOperationException("Cannot roll more than 20 times.");
             // Check for rolls in a frame
             if (currentRoll%2 == 1 && currentRoll < 19 && rolls[currentRoll-1] + pins > 10)
