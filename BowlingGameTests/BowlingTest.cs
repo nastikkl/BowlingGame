@@ -105,5 +105,30 @@ namespace BowlingGameTests
             _game.PrintGame();
             Assert.AreEqual(99, _game.Score(), "Score should be 99 for the given game rolls.");
         }
+        [TestMethod]
+        public void CanPlayGame4()
+        {
+            int[] game = [
+                4, 3, // Frame 1
+                7, 3, // Frame 2 (spare) 22
+                5, 2, // Frame 3
+                8, 1, // Frame 4
+                4, 6, // Frame 5 (spare) 50
+                2, 4, // Frame 6
+                8, 0, // Frame 7 
+                8, 0, // Frame 8 
+                8, 2, // Frame 9 (spare) 92
+                10, 10, // Final frame (strike) 122
+                10
+                ];
+            _game.Reset();
+            for (int i = 0; i < game.Length; i++)
+            {
+                _game.Roll(game[i]);
+            }
+          ;
+            _game.PrintGame();
+            Assert.AreEqual(122, _game.Score(), "Score should be 122 for the given game rolls.");
+        }
     }
 }
